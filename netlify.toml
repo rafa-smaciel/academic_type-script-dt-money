@@ -2,7 +2,14 @@
   command = "npm run build"
   publish = "build/"
 
-[[redirects]]
-  from = "/api/*"
-  to = "http://localhost:3000/:splat"
-  status = 200
+[context.production]
+  NODE_ENV = "production"
+  REACT_APP_API_URL = "https://sua-api.com"
+
+[context.branch-deploy]
+  NODE_ENV = "production"
+  REACT_APP_API_URL = "https://sua-api-staging.com"
+
+[context.deploy-preview]
+  NODE_ENV = "production"
+  REACT_APP_API_URL = "https://sua-api-preview.com"
